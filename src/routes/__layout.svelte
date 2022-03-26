@@ -17,8 +17,9 @@
 	}
 	footer {
 		width: 100%;
-		max-width: 1200px;
+		/* max-width: 1200px; */
 		margin: 0 auto;
+		text-align: center;
 	}
 	main {
 		flex: 1;
@@ -33,6 +34,7 @@
 	@media (min-width: 1200px) {
 		footer {
 			margin-bottom: 2em;
+			text-align: left;
 		}
 	}
 </style>
