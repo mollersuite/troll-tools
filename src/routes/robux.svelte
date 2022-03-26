@@ -6,7 +6,10 @@
 
 <h1>Robux Calcuator</h1>
 <small>Original algorithm from Amourousity.</small>
-<section><span>Earnings before tax:</span> <TextBox type="number" bind:value={Robux} /></section>
+<section>
+	<label for="robux">Earnings before tax:</label>
+	<TextBox type="number" id="robux" bind:value={Robux} />
+</section>
 <br />
 Rounded tax percent: {Tax}%<br />
 You{#if Tax > 30}
@@ -33,7 +36,7 @@ Price adjusted for tax: {Math.floor(Robux / 0.7 + 0.5)}
 		gap: 1ch;
 		flex-direction: row;
 	}
-	span {
+	label {
 		flex-grow: 1;
 		width: max-content;
 		white-space: pre;
