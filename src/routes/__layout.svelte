@@ -19,7 +19,6 @@
 		width: 100%;
 		max-width: 1200px;
 		margin: 0 auto;
-		margin-bottom: 2em;
 	}
 	main {
 		flex: 1;
@@ -30,5 +29,10 @@
 		max-width: 1200px;
 		margin: 0 auto;
 		box-sizing: border-box;
+	}
+	@media (min-width: 1200px) {
+		footer {
+			margin-bottom: 2em;
+		}
 	}
 </style>
