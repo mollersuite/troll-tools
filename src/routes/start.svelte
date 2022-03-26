@@ -21,7 +21,6 @@
   <TextBox name="q" type=search/>
   <input type="hidden" name="t" value="h_" />
   <input type="hidden" name="ia" value="web" />
-  
 </form>
 
 <ComboBox items={Object.entries(engines).map(([name,value]) => ({ name,value }))} bind:value={engine} />
