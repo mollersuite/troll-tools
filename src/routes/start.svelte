@@ -8,6 +8,7 @@
 		Yahoo: "https://search.yahoo.com/search",
 		Linux: "https://searx.projectlounge.pw",
 		OpenCorporates: "https://opencorporates.com/search",
+    Twitter: "https://twitter.com/search",
 	}
 	import { page } from "$app/stores"
 	import { TextBox, ComboBox, RadioButton, ListItem } from "fluent-svelte"
