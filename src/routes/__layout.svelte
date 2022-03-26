@@ -1,6 +1,13 @@
 <script>
+	import { navigating, page } from "$app/stores"
 	import "$lib/app.css"
+	import CaretLeft from "@fluentui/svg-icons/icons/caret_left_20_filled.svg?raw"
+	$: path = $page.url.pathname
 </script>
+
+{#if path !== "/"}
+	<a href="/" sveltekit:prefetch>{@html CaretLeft} Back to index</a>
+{/if}
 
 <main>
 	<slot />
@@ -12,6 +19,22 @@
 </footer>
 
 <style>
+	a :global(svg) {
+		fill: currentColor;
+	}
+	a {
+		display: flex;
+		margin: 0 auto;
+		max-width: 1200px;
+		width: 100%;
+		margin-top: 1em;
+		align-items: center;
+		gap: 1ch;
+		flex-direction: row;
+	}
+	a:hover {
+		text-decoration: none;
+	}
 	hr {
 		width: 100%;
 	}
