@@ -6,7 +6,21 @@
 	<slot />
 </main>
 
+<footer>
+	<hr />
+	&copy; {new Date().getFullYear()} trollarTech GP
+</footer>
+
 <style>
+	hr {
+		width: 100%;
+	}
+	footer {
+		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
+		margin-bottom: 2em;
+	}
 	main {
 		flex: 1;
 		display: flex;
