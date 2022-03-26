@@ -28,6 +28,7 @@
 
 <svelte:head>
   <title>trollarweb</title>
+  <meta name="description" content="trolls your start page">
 </svelte:head>
 
 <style>
