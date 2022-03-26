@@ -10,7 +10,7 @@
 
 <svelte:head>
 	<title>troll</title>
-	<meta name="description" content="trolls your start page" />
+	<meta name="description" content="trolls you" />
 </svelte:head>
 
 <section>
