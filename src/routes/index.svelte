@@ -21,18 +21,18 @@
 </section>
 
 <style>
-  section :global(svg) {
-    fill: currentColor;
-  }
+	section :global(svg) {
+		fill: currentColor;
+	}
 	section {
 		fill: currentColor;
 	}
 	section :global(h1) {
 		font-size: 1em;
-    display: flex;
-    align-items: center;
-    gap: 1ch;
-    flex-direction: row;
+		display: flex;
+		align-items: center;
+		gap: 1ch;
+		flex-direction: row;
 	}
 	section {
 		column-count: auto;
