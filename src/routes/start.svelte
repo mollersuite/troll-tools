@@ -11,7 +11,7 @@
     Twitter: "https://twitter.com/search",
 	}
 	import { page } from "$app/stores"
-	import { TextBox, ComboBox, RadioButton, ListItem } from "fluent-svelte"
+	import { TextBox, RadioButton, ListItem } from "fluent-svelte"
 	import { fly } from "svelte/transition"
 	$: engine = engines[$page.url.searchParams.get("engine")] ?? engines.Bing
 </script>
