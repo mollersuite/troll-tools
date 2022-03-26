@@ -30,7 +30,7 @@
 	{/if}
 </form>
 
-{#each Object.entries(engines) as [name, url]}
+{#each Object.keys(engines) as name}
 	<ListItem href="?engine={name}" selected={engine === engines[name]}>{name}</ListItem>
 {/each}
 
