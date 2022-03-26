@@ -4,6 +4,7 @@
 
 <script>
 	import GlobalSearch from "@fluentui/svg-icons/icons/globe_search_20_filled.svg?raw"
+	import MoneyCalcuator from "@fluentui/svg-icons/icons/money_calculator_20_filled.svg?raw"
 </script>
 
 <h1>troll</h1>
@@ -16,7 +17,11 @@
 <section>
 	<a sveltekit:prefetch href="/start">
 		<h1>{@html GlobalSearch} trollweb</h1>
-		<p>troll your world!</p>
+		<p>trolls your start page</p>
+	</a>
+	<a sveltekit:prefetch href="/robux">
+		<h1>{@html MoneyCalcuator} robux calcuator</h1>
+		<p>calculates robux tax</p>
 	</a>
 </section>
 
