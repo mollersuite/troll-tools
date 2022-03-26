@@ -2,9 +2,13 @@
 	import { navigating, page } from "$app/stores"
 	import "$lib/app.css"
 	import CaretLeft from "@fluentui/svg-icons/icons/caret_left_20_filled.svg?raw"
+	import { ProgressBar } from "fluent-svelte"
 	$: path = $page.url.pathname
 </script>
 
+{#if $navigating}
+	<ProgressBar />
+{/if}
 {#if path !== "/"}
 	<a href="/" sveltekit:prefetch>{@html CaretLeft} Back to index</a>
 {/if}
