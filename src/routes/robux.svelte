@@ -1,6 +1,7 @@
 <script>
-	let Robux = 100
+	export let Robux = 100
 	let Tax = Math.floor(1e3 * (1 - Math.floor(Robux * 0.7 + 0.5) / Robux)) / 10
+	import { TextBox } from "fluent-svelte";
 </script>
 
 <h1>Robux Calcuator</h1>
@@ -23,6 +24,8 @@ You{#if Tax > 30}
 {/if}<br />
 Earnings after tax: {Math.floor(Robux * 0.7 + 0.5)}<br />
 Price adjusted for tax: {Math.floor(Robux / 0.7 + 0.5)}
+
+<TextBox type=number bind:value={Robux} />
 
 <svelte:head>
 	<title>Robux Calcuator</title>
