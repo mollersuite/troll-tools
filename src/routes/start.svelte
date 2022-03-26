@@ -10,9 +10,9 @@
 		OpenCorporates: "https://opencorporates.com/search",
 	}
 	import { page } from "$app/stores"
-	import { TextBox, ComboBox, RadioButton } from "fluent-svelte"
+	import { TextBox, ComboBox, RadioButton, ListItem } from "fluent-svelte"
 	import { fly } from "svelte/transition"
-	let engine = engines[$page.url.searchParams.get("engine")] ?? engines.Bing
+	$: engine = engines[$page.url.searchParams.get("engine")] ?? engines.Bing
 </script>
 
 <h1>trollarweb</h1>
@@ -29,9 +29,9 @@
 	{/if}
 </form>
 
-<ComboBox
-	items={Object.entries(engines).map(([name, value]) => ({ name, value }))}
-	bind:value={engine} />
+{#each Object.entries(engines) as [name, url]}
+	<ListItem href="?engine={name}" selected={engine === engines[name]}>{name}</ListItem>
+{/each}
 
 <svelte:head>
 	<title>trollarweb</title>
