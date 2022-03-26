@@ -1,3 +1,6 @@
+<script context="module">
+  export const prerender = true;
+</script>
 <script>
   const engines = {
     Bing: 'https://bing.com/search',
