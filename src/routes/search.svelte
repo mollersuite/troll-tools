@@ -1,5 +1,5 @@
 <script context="module">
-	import Troll from "@fluentui/svg-icons/icons/emoji_laugh_20_filled.svg?raw"
+	import Search from "@fluentui/svg-icons/icons/search_20_filled.svg?raw"
 	export const prerender = true
 	/**
 	 * @type {import('@sveltejs/kit').Load}
@@ -8,9 +8,9 @@
 		return {
 			props,
 			stuff: {
-				name: "troll",
-				description: "A collection of web tools",
-				icon: Troll,
+				name: "Search",
+				description: "because you're lazy",
+				icon: Search,
 			},
 		}
 	}
@@ -20,26 +20,19 @@
 	import { TextBox } from "fluent-svelte"
 	import { goto } from "$app/navigation"
 	import { flip } from "svelte/animate"
-	import Fuse from "fuse.js"
-	export let tools = []
-	let value = ""
-
-	const fuse = new Fuse(tools, {
-		keys: ["name", "description"],
-	})
-	$: listed = value ? fuse.search(value).map(({ item }) => item) : tools
-
-	function go() {
-		goto(listed[0].href)
+	import { page } from "$app/stores"
+	let value = $page.url.searchParams.get("q")
+	function submit() {
+		goto("/search?q=" + encodeURIComponent(value))
 	}
+	export let tools
 </script>
 
-<form on:submit|preventDefault={go} action="/search">
-	<TextBox type="search" placeholder="Search for a tool..." bind:value on:search={go} name="q" />
+<form on:submit|preventDefault={submit}>
+	<TextBox type="search" name="q" bind:value on:search={submit} autofocus required placeholder="Your query here..."/>
 </form>
-
 <section>
-	{#each listed as { href, name, icon, description } (href)}
+	{#each tools as { href, name, icon, description } (href)}
 		<a sveltekit:prefetch {href} animate:flip={{ duration: 100 }}>
 			<h1>{@html icon} {name}</h1>
 			<p>{description}</p>
