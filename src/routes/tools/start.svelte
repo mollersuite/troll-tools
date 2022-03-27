@@ -15,6 +15,8 @@
 </script>
 
 <script>
+	import { page } from "$app/stores"
+
 	const engines = {
 		Bing: "https://bing.com/search",
 		You: "https://you.com/search",
@@ -25,8 +27,8 @@
 		Linux: "https://searx.projectlounge.pw",
 		OpenCorporates: "https://opencorporates.com/search",
 		Twitter: "https://twitter.com/search",
+		troll: $page.url.origin,
 	}
-	import { page } from "$app/stores"
 	import { TextBox, RadioButton, ListItem } from "fluent-svelte"
 	import { fly } from "svelte/transition"
 	$: engine = engines[$page.url.searchParams.get("engine")] ?? engines.Bing
