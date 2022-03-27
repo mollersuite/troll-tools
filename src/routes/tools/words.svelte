@@ -38,37 +38,55 @@
 
 <form on:submit|preventDefault={search}>
 	<TextBox
+		class="sticky"
 		type="search"
 		placeholder="Search for a substring..."
 		bind:value
 		required
 		on:search={search} />
+
+	{#if found.length}
+		<nav>
+			<IconButton type="button" disabled={page === 0} on:click={() => page--}
+				>{@html Back}</IconButton>
+			{page}
+			<IconButton
+				type="button"
+				disabled={Math.ceil(found.length / 25) <= page + 1}
+				on:click={() => page++}>{@html Forward}</IconButton>
+		</nav>
+	{/if}
 </form>
 <section>
-	{#each chunk(found, 25)[page] ?? [] as word (word)}
+	{#each chunk(found, 100)[page] ?? [] as word (word)}
 		<ListItem on:click={() => navigator.clipboard.writeText(word)}>{word}</ListItem>
 	{:else}
 		<InfoBar title="Nothing found!" message="Try searching for a substring." closable={false} />
 	{/each}
-
-	{#if found.length}
-		<nav>
-			<IconButton disabled={page === 0} on:click={() => page--}>{@html Back}</IconButton>
-			{page}
-			<IconButton disabled={Math.ceil(found.length / 25) <= page + 1} on:click={() => page++}
-				>{@html Forward}</IconButton>
-		</nav>
-	{/if}
 </section>
 
 <style>
 	nav {
-		display: flex;
+		display: inline-flex;
 		justify-content: center;
 		align-items: center;
 		gap: 1ch;
 		flex-direction: row;
 		font-family: "Space Mono", ui-monospace, "Input Mono", "Cascadia Mono", "Segoe UI Mono",
 			"Ubuntu Mono", "Roboto Mono", "Fira Code", Menlo, Monaco, Consolas, monospace;
+	}
+	form {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 1ch;
+		flex-direction: row;
+		position: sticky;
+		top: 0;
+		z-index: 2;
+	}
+	nav {
+		position: sticky;
+		bottom: 0;
 	}
 </style>
