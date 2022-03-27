@@ -68,5 +68,7 @@
 		align-items: center;
 		gap: 1ch;
 		flex-direction: row;
+		font-family: "Space Mono", ui-monospace, "Input Mono", "Cascadia Mono", "Segoe UI Mono",
+			"Ubuntu Mono", "Roboto Mono", "Fira Code", Menlo, Monaco, Consolas, monospace;
 	}
 </style>
