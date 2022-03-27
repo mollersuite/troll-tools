@@ -23,11 +23,16 @@
 
 	let value = ""
 	export let tools = []
+
 	const fuse = new Fuse(tools, {
 		keys: ["name", "description"],
 	})
+
 	$: listed = value ? fuse.search(value).map(({ item }) => item) : tools
-	const go = () => goto(listed[0].href)
+
+	function go() {
+		goto(listed[0].href)
+	}
 </script>
 
 <form on:submit|preventDefault={go}>
