@@ -31,7 +31,7 @@
 
 <footer>
 	<hr />
-	&copy; {new Date().getFullYear()} Mollybdenum GP
+	&copy; {new Date().getFullYear()} trollar and Jack
 </footer>
 
 <style>
