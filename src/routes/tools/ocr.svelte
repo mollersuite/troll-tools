@@ -1,3 +1,20 @@
+<script context="module">
+	import OCR from "@fluentui/svg-icons/icons/scan_text_20_filled.svg?raw"
+	/**
+	 * @type {import('@sveltejs/kit').Load}
+	 */
+	export async function load() {
+		return {
+			stuff: {
+				name: "OCR",
+				description:
+					"Very experimental, I haven't even added a proper output! Powered by Tesseract.js",
+				icon: OCR,
+			},
+		}
+	}
+</script>
+
 <script>
 	import { browser } from "$app/env"
 	import { createWorker } from "tesseract.js"
@@ -41,12 +58,6 @@
 	}
 </script>
 
-<svelte:head>
-	<title>OCR</title>
-	<meta name="description" content="Reads text from an image. (VERY EXPERIMENTAL!)" />
-</svelte:head>
-<h1>OCR</h1>
-<p>Very experimental, I haven't even added a proper output! Powered by Tesseract.js</p>
 {#if progress !== 100}
 	{status}<ProgressBar value={progress} />
 {/if}

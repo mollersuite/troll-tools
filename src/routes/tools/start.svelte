@@ -1,3 +1,19 @@
+<script context="module">
+	import GlobalSearch from "@fluentui/svg-icons/icons/globe_search_20_filled.svg?raw"
+	/**
+	 * @type {import('@sveltejs/kit').Load}
+	 */
+	export async function load() {
+		return {
+			stuff: {
+				name: "trollarweb",
+				description: "trolls your start page",
+				icon: GlobalSearch,
+			},
+		}
+	}
+</script>
+
 <script>
 	const engines = {
 		Bing: "https://bing.com/search",
@@ -15,8 +31,6 @@
 	import { fly } from "svelte/transition"
 	$: engine = engines[$page.url.searchParams.get("engine")] ?? engines.Bing
 </script>
-
-<h1>trollarweb</h1>
 
 <form action={engine} target="_blank">
 	<TextBox name="q" type="search" />

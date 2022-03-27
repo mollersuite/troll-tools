@@ -9,23 +9,32 @@
 {#if $navigating}
 	<ProgressBar />
 {/if}
+
 {#if path !== "/"}
 	<a href="/" sveltekit:prefetch>{@html CaretLeft} Back to index</a>
 {/if}
 
+<svelte:head>
+	{#if $page.stuff.name}
+		<title>{$page.stuff.name}</title>
+		<meta name="description" content={$page.stuff.description} />
+	{/if}
+</svelte:head>
+
 <main>
+	{#if $page.stuff.name}
+		<h1>{@html $page.stuff.icon ?? ""} {$page.stuff.name}</h1>
+		<p>{$page.stuff.description}</p>
+	{/if}
 	<slot />
 </main>
 
 <footer>
 	<hr />
-	&copy; {new Date().getFullYear()} trollarTech GP
+	&copy; {new Date().getFullYear()} Mollybdenum GP
 </footer>
 
 <style>
-	a :global(svg) {
-		fill: currentColor;
-	}
 	a {
 		display: flex;
 		margin: 0 auto;

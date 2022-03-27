@@ -1,42 +1,48 @@
 <script context="module">
-	export const prerender = true
+	import Troll from "@fluentui/svg-icons/icons/emoji_laugh_20_filled.svg?raw"
+	/**
+	 * @type {import('@sveltejs/kit').Load}
+	 */
+	export async function load({ props }) {
+		return {
+			props,
+			stuff: {
+				name: "troll",
+				description: "A collection of web tools from Mollybdenum.",
+				icon: Troll,
+			},
+		}
+	}
 </script>
 
 <script>
-	import GlobalSearch from "@fluentui/svg-icons/icons/globe_search_20_filled.svg?raw"
-	import MoneyCalcuator from "@fluentui/svg-icons/icons/money_calculator_20_filled.svg?raw"
-	import OCR from "@fluentui/svg-icons/icons/scan_text_20_filled.svg?raw"
+	import { goto } from "$app/navigation"
+	import { TextBox } from "fluent-svelte"
+	import Fuse from "fuse.js"
+
+	let value = ""
+	export let tools = []
+	const fuse = new Fuse(tools, {
+		keys: ["name", "description"],
+	})
+	$: listed = value ? fuse.search(value).map(({ item }) => item) : tools
+	const go = () => goto(listed[0].href)
 </script>
 
-<h1>troll</h1>
-
-<svelte:head>
-	<title>troll</title>
-	<meta name="description" content="trolls you" />
-</svelte:head>
+<form on:submit|preventDefault={go}>
+	<TextBox type="search" placeholder="Search for a tool..." bind:value on:search={go} />
+</form>
 
 <section>
-	<a sveltekit:prefetch href="/start">
-		<h1>{@html GlobalSearch} trollweb</h1>
-		<p>trolls your start page</p>
-	</a>
-	<a sveltekit:prefetch href="/robux">
-		<h1>{@html MoneyCalcuator} robux calcuator</h1>
-		<p>calculates robux tax</p>
-	</a>
-	<a sveltekit:prefetch href="/ocr">
-		<h1>{@html OCR} OCR</h1>
-		<p>Reads text from an image. (VERY EXPERIMENTAL!)</p>
-	</a>
+	{#each listed as { href, name, icon, description }}
+		<a sveltekit:prefetch {href}>
+			<h1>{@html icon} {name}</h1>
+			<p>{description}</p>
+		</a>
+	{/each}
 </section>
 
 <style>
-	section :global(svg) {
-		fill: currentColor;
-	}
-	section {
-		fill: currentColor;
-	}
 	section :global(h1) {
 		font-size: 1em;
 		display: flex;

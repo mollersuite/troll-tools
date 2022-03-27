@@ -6,5 +6,9 @@ declare namespace App {
 	// interface Locals {}
 	// interface Platform {}
 	// interface Session {}
-	// interface Stuff {}
+	interface Stuff {
+		name: string
+		description: string
+		icon: string
+	}
 }

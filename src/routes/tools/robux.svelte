@@ -1,11 +1,25 @@
+<script context="module">
+	import MoneyCalcuator from "@fluentui/svg-icons/icons/money_calculator_20_filled.svg?raw"
+	/**
+	 * @type {import('@sveltejs/kit').Load}
+	 */
+	export async function load() {
+		return {
+			stuff: {
+				name: "Robux Calcuator",
+				description: "Original algorithm from Amourousity.",
+				icon: MoneyCalcuator,
+			},
+		}
+	}
+</script>
+
 <script>
 	export let Robux = 100
 	let Tax = Math.floor(1e3 * (1 - Math.floor(Robux * 0.7 + 0.5) / Robux)) / 10
 	import { TextBox } from "fluent-svelte"
 </script>
 
-<h1>Robux Calcuator</h1>
-<small>Original algorithm from Amourousity.</small>
 <section>
 	<label for="robux">Earnings before tax:</label>
 	<TextBox type="number" id="robux" bind:value={Robux} />
@@ -23,11 +37,6 @@ You{#if Tax > 30}
 {/if}<br />
 Earnings after tax: {Math.floor(Robux * 0.7 + 0.5)}<br />
 Price adjusted for tax: {Math.floor(Robux / 0.7 + 0.5)}
-
-<svelte:head>
-	<title>Robux Calcuator</title>
-	<meta name="description" content="Adjust your game passes for tax." />
-</svelte:head>
 
 <style>
 	section {
