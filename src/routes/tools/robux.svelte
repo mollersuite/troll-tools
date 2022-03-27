@@ -17,12 +17,12 @@
 <script>
 	let Robux = 100
 	$: Tax = Math.floor(1e3 * (1 - Math.floor(Robux * 0.7 + 0.5) / Robux)) / 10
-	import { TextBox } from "fluent-svelte"
+	import { NumberBox } from "fluent-svelte"
 </script>
 
 <section>
 	<label for="robux">Earnings before tax:</label>
-	<TextBox type="number" id="robux" bind:value={Robux} />
+	<NumberBox id="robux" bind:value={Robux} required />
 </section>
 <br />
 Rounded tax percent: {Tax}%<br />
