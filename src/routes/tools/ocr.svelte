@@ -20,6 +20,7 @@
 	import { createWorker } from "tesseract.js"
 	import link from "tesseract.js/dist/worker.min.js?url"
 	import { ProgressBar } from "fluent-svelte"
+	import { onDestroy } from "svelte"
 	let progress = 100
 	let status = ""
 	/**
@@ -50,6 +51,7 @@
 			await worker.loadLanguage("eng")
 			await worker.initialize("eng")
 		})
+		onDestroy(() => worker.terminate())
 	}
 
 	$: if (browser) {
