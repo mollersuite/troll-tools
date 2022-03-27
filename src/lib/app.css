@@ -5,7 +5,7 @@ body {
 	overflow-x: hidden;
 	min-height: 100vh;
 	margin: 0;
-	font-family: Inter, var(--fds-font-family-text);
+	font-family: var(--fds-font-family-text);
 	background-color: var(--fds-solid-background-base);
 	color: var(--fds-text-primary);
 	display: flex;
@@ -20,7 +20,7 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: "Inter Black", var(--fds-font-family-display);
+	font-family: var(--fds-font-family-display);
 }
 
 p {
