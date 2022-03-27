@@ -6,7 +6,7 @@
 		return {
 			props: {
 				status,
-				message: error,
+				error,
 				routeId,
 			},
 		}
@@ -19,22 +19,22 @@
 	/** @type {number} */
 	export let status
 	/** @type {Error} */
-	export let message
+	export let error
 	export let routeId
 </script>
 
 <svelte:head>
-	<title>{status}: {message.name} - trolled!</title>
+	<title>{status}: {error.name} - trolled!</title>
 </svelte:head>
 
 <img class="big" src="/favicon.svg" alt="trollface owned" />
 <InfoBar closable={false} title={status.toString()} severity="critical">
 	{#if routeId}
 		{routeId} >
-	{/if}{message.name}
+	{/if}{error.name}
 	<InfoBadge style="float: right" severity="critical">{mode}</InfoBadge>
 </InfoBar>
-<pre>{message.stack}</pre>
+<pre>{error.stack}</pre>
 
 <style>
 	.big {
