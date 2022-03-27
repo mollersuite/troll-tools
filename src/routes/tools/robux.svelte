@@ -1,5 +1,6 @@
 <script context="module">
 	import MoneyCalcuator from "@fluentui/svg-icons/icons/money_calculator_20_filled.svg?raw"
+	export const prerender = true
 	/**
 	 * @type {import('@sveltejs/kit').Load}
 	 */
