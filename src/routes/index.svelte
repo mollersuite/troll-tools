@@ -1,5 +1,6 @@
 <script context="module">
 	import Troll from "@fluentui/svg-icons/icons/emoji_laugh_20_filled.svg?raw"
+	export const prerender = true
 	/**
 	 * @type {import('@sveltejs/kit').Load}
 	 */
