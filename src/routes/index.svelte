@@ -5,6 +5,7 @@
 <script>
 	import GlobalSearch from "@fluentui/svg-icons/icons/globe_search_20_filled.svg?raw"
 	import MoneyCalcuator from "@fluentui/svg-icons/icons/money_calculator_20_filled.svg?raw"
+	import OCR from "@fluentui/svg-icons/icons/scan_text_20_filled.svg?raw"
 </script>
 
 <h1>troll</h1>
@@ -22,6 +23,10 @@
 	<a sveltekit:prefetch href="/robux">
 		<h1>{@html MoneyCalcuator} robux calcuator</h1>
 		<p>calculates robux tax</p>
+	</a>
+	<a sveltekit:prefetch href="/ocr">
+		<h1>{@html OCR} OCR</h1>
+		<p>Reads text from an image. (VERY EXPERIMENTAL!)</p>
 	</a>
 </section>
 

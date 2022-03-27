@@ -40,5 +40,8 @@
     "trailingComma": "es5",
     "useTabs": true,
     "vueIndentScriptAndStyle": false
+  },
+  "dependencies": {
+    "tesseract.js": "^2.1.5"
   }
 }
