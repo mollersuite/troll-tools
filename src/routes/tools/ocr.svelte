@@ -20,7 +20,7 @@
 	import { createWorker } from "tesseract.js"
 	import link from "tesseract.js/dist/worker.min.js?url"
 	import { ProgressBar } from "fluent-svelte"
-	import { onDestroy } from "svelte"
+	import { onMount } from "svelte"
 	let progress = 100
 	let status = ""
 	/**
@@ -35,7 +35,7 @@
 	 * @type {import('tesseract.js').Worker}
 	 */
 	let worker
-	if (browser) {
+	onMount(() => {
 		worker = createWorker({
 			logger(data) {
 				console.log(data)
@@ -51,8 +51,8 @@
 			await worker.loadLanguage("eng")
 			await worker.initialize("eng")
 		})
-		onDestroy(() => worker.terminate())
-	}
+		return () => worker.terminate()
+	})
 
 	$: if (browser) {
 		const file = files[0]
