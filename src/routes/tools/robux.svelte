@@ -15,8 +15,8 @@
 </script>
 
 <script>
-	export let Robux = 100
-	let Tax = Math.floor(1e3 * (1 - Math.floor(Robux * 0.7 + 0.5) / Robux)) / 10
+	let Robux = 100
+	$: Tax = Math.floor(1e3 * (1 - Math.floor(Robux * 0.7 + 0.5) / Robux)) / 10
 	import { TextBox } from "fluent-svelte"
 </script>
 
@@ -26,13 +26,11 @@
 </section>
 <br />
 Rounded tax percent: {Tax}%<br />
-You{#if Tax > 30}
-	lose: {Math.abs(30 - Tax)}%
-{/if}
-{#if Tax < 30}
-	gain: {Math.abs(30 - Tax)}%
-{/if}
-{#if Tax == 30}
+You {#if Tax > 30}
+	lose: {Math.abs(30 - Tax).toFixed(2)}%
+{:else if Tax < 30}
+	gain: {Math.abs(30 - Tax).toFixed(2)}%
+{:else if Tax == 30}
 	break even
 {/if}<br />
 Earnings after tax: {Math.floor(Robux * 0.7 + 0.5)}<br />
