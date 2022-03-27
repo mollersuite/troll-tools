@@ -22,8 +22,9 @@
 	import { flip } from "svelte/animate"
 	import Fuse from "fuse.js"
 	import { page } from "$app/stores"
+	import { browser } from "$app/env"
 	export let tools = []
-	let value = $page.url.searchParams.get("q") ?? ""
+	let value = browser ? $page.url.searchParams.get("q") ?? "" : ""
 
 	const fuse = new Fuse(tools, {
 		keys: ["name", "description"],
