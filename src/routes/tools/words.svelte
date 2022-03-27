@@ -40,14 +40,16 @@
 	{#each found as word (word)}
 		<ListItem on:click={() => navigator.clipboard.writeText(word)}>{word}</ListItem>
 	{:else}
-		<em>Nothing found!</em>
+		<InfoBar title="Nothing found!" message="Try searching for a substring." closable={false} />
 	{/each}
 </section>
 
 <style>
-	em {
-		text-align: center;
-		display: block;
-		color: var(--fds-text-disabled);
+	nav {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 1ch;
+		flex-direction: row;
 	}
 </style>
