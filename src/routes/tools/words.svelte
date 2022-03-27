@@ -52,7 +52,7 @@
 			{page}
 			<IconButton
 				type="button"
-				disabled={Math.ceil(found.length / 25) <= page + 1}
+				disabled={Math.ceil(found.length / 100) <= page + 1}
 				on:click={() => page++}>{@html Forward}</IconButton>
 		</nav>
 	{/if}
