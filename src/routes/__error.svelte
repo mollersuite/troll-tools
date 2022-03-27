@@ -27,9 +27,7 @@
 	<title>{status}: {message.name} - trolled!</title>
 </svelte:head>
 
-<h1 class="big">
-	<img src="/favicon.svg" alt="trollface owned" />
-</h1>
+<img class="big" src="/favicon.svg" alt="trollface owned" />
 <InfoBar closable={false} title={status.toString()} severity="critical">
 	{#if routeId}
 		{routeId} >
@@ -43,9 +41,8 @@
 		pointer-events: none;
 		user-select: none;
 		z-index: -1;
-		font-size: 30vw;
+		width: 30vw;
 		position: absolute;
-		top: -15vw;
 		left: -5vw;
 		font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 		opacity: 0.5;
