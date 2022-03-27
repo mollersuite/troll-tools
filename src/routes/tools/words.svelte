@@ -53,13 +53,10 @@
 
 	{#if found.length}
 		<nav>
-			{#if page > 0}
-				<IconButton on:click={() => page--}>{@html Back}</IconButton>
-			{/if}
+			<IconButton disabled={page === 0} on:click={() => page--}>{@html Back}</IconButton>
 			{page}
-			{#if Math.ceil(found.length / 25) > page + 1}
-				<IconButton on:click={() => page++}>{@html Forward}</IconButton>
-			{/if}
+			<IconButton disabled={Math.ceil(found.length / 25) <= page + 1} on:click={() => page++}
+				>{@html Forward}</IconButton>
 		</nav>
 	{/if}
 </section>
