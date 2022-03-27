@@ -70,7 +70,8 @@
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
-		gap: 1ch;
+		user-select: none;
+		gap: 0;
 		flex-direction: row;
 		font-family: "Space Mono", ui-monospace, "Input Mono", "Cascadia Mono", "Segoe UI Mono",
 			"Ubuntu Mono", "Roboto Mono", "Fira Code", Menlo, Monaco, Consolas, monospace;
@@ -79,14 +80,10 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		gap: 1ch;
+		gap: 0;
 		flex-direction: row;
 		position: sticky;
 		top: 0;
 		z-index: 2;
-	}
-	nav {
-		position: sticky;
-		bottom: 0;
 	}
 </style>
