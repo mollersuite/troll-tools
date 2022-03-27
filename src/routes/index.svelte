@@ -9,7 +9,7 @@
 			props,
 			stuff: {
 				name: "troll",
-				description: "A collection of web tools from Mollybdenum.",
+				description: "A collection of web tools",
 				icon: Troll,
 			},
 		}
