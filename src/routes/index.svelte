@@ -17,17 +17,16 @@
 </script>
 
 <script>
-	import { goto } from "$app/navigation"
 	import { TextBox } from "fluent-svelte"
+	import { goto } from "$app/navigation"
+	import { flip } from "svelte/animate"
 	import Fuse from "fuse.js"
-
-	let value = ""
 	export let tools = []
+	let value = ""
 
 	const fuse = new Fuse(tools, {
 		keys: ["name", "description"],
 	})
-
 	$: listed = value ? fuse.search(value).map(({ item }) => item) : tools
 
 	function go() {
@@ -40,8 +39,8 @@
 </form>
 
 <section>
-	{#each listed as { href, name, icon, description }}
-		<a sveltekit:prefetch {href}>
+	{#each listed as { href, name, icon, description } (href)}
+		<a sveltekit:prefetch {href} animate:flip={{ duration: 100 }}>
 			<h1>{@html icon} {name}</h1>
 			<p>{description}</p>
 		</a>
