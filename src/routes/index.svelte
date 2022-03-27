@@ -21,8 +21,9 @@
 	import { goto } from "$app/navigation"
 	import { flip } from "svelte/animate"
 	import Fuse from "fuse.js"
+	import { page } from "$app/stores"
 	export let tools = []
-	let value = ""
+	let value = $page.url.searchParams.get("q") ?? ""
 
 	const fuse = new Fuse(tools, {
 		keys: ["name", "description"],

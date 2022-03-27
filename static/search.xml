@@ -3,7 +3,7 @@
   <Description>a couple web tools</Description>
   <InputEncoding>[UTF-8]</InputEncoding>
   <Image width="16" height="16" type="image/x-icon">[https://troll.pages.dev/favicon.svg]</Image>
-  <Url type="text/html" template="https://troll.pages.dev/search">
+  <Url type="text/html" template="https://troll.pages.dev/">
     <Param name="q" value="{searchTerms}" />
   </Url>
 </OpenSearchDescription>
