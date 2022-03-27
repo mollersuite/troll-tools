@@ -9,7 +9,9 @@ export const get = async () => {
 			tools: await Promise.all(
 				tools.map(async ([href, load]) => {
 					const { load: kitLoad } = await load()
-					const { stuff } = await kitLoad()
+					const { stuff } = await kitLoad({
+						props: {},
+					})
 					return {
 						href: href.replace(".svelte", ""),
 						name: stuff.name,
