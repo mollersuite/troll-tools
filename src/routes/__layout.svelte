@@ -47,7 +47,10 @@
 		>powered by <a href="https://kit.svelte.dev">SvelteKit</a> &
 		<a href="https://fluent-svelte.vercel.app/">fluent-svelte</a></span>
 	<hr />
-	<span><IconButton href="https://github.com/trollar/start-page">{@html Code}</IconButton></span>
+	<span
+		><IconButton title="Source code" href="https://github.com/trollar/start-page"
+			>{@html Code}</IconButton
+		></span>
 	<hr />
 </footer>
 
