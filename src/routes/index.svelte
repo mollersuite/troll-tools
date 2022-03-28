@@ -28,7 +28,6 @@
 
 	const fuse = new Fuse(tools, {
 		keys: ["name", "description"],
-		threshold: 1,
 	})
 	$: listed = value ? fuse.search(value).map(({ item }) => item) : tools
 
