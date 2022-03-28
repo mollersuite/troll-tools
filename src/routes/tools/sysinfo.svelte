@@ -84,7 +84,7 @@
 		</ul>
 	</li>
 	{#if navigator.hardwareConcurrency}
-		<li>Cores: At least {navigator.hardwareConcurrency}</li>
+		<li>Cores: At most {navigator.hardwareConcurrency}</li>
 	{/if}
 {:else}
 	<InfoBar
