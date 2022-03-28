@@ -58,6 +58,7 @@
 		flex-direction: row;
 	}
 	section {
+		margin-top: 32px;
 		column-count: auto;
 		column-width: 250px;
 		column-gap: 1em;
