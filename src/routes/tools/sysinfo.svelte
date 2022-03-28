@@ -83,7 +83,9 @@
 			{/each}
 		</ul>
 	</li>
-	<li>Cores: At least {navigator.hardwareConcurrency}</li>
+	{#if navigator.hardwareConcurrency}
+		<li>Cores: At least {navigator.hardwareConcurrency}</li>
+	{/if}
 {:else}
 	<InfoBar
 		title="JavaScript required"
