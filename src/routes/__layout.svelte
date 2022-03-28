@@ -35,9 +35,7 @@
 <footer>
 	<hr />
 	<!-- svelte-ignore missing-declaration -->
-	<span>
-		<IconButton on:click={() => new Audio(Sound).play()}>{@html Troll}</IconButton> troll
-	</span>
+	<IconButton on:click={() => new Audio(Sound).play()}>{@html Troll}</IconButton> troll
 	<hr />
 	<span
 		>made by <a href="https://5079.ml">Jack</a> &
