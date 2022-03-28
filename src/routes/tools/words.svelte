@@ -1,5 +1,5 @@
 <script context="module">
-	import Words from "@fluentui/svg-icons/icons/text_word_count_20_filled.svg?raw"
+	import Words from "@fluentui/svg-icons/icons/book_letter_20_filled.svg?raw"
 	export const prerender = true
 	/**
 	 * @type {import('@sveltejs/kit').Load}
@@ -8,7 +8,7 @@
 		return {
 			stuff: {
 				name: "Word Search",
-				description: "Amourousity asked for it.",
+				description: "Possibly a Word Bomb cheat",
 				icon: Words,
 			},
 			props,
