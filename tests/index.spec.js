@@ -7,15 +7,14 @@ test("search works", async ({ page }) => {
 	await expect(page.locator("section a h1")).toHaveText("Word Search")
 })
 
-/*
-import { test, expect } from '@playwright/test';
-
-test('basic test', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
-  const title = page.locator('.navbar__inner .navbar__title');
-  await expect(title).toHaveText('Playwright');
-});
-*/
+test("global search works", async ({ page }) => {
+	await page.goto("/404")
+	await page.type("body", "``", { delay: 10 })
+	await page.type("input", "Word Search")
+	await page.locator("input").press("Enter")
+	await expect(page.locator("section")).toBeVisible()
+	await expect(page.locator("section a h1")).toHaveText("Word Search")
+})
 
 test.describe.parallel("trollarweb", async () => {
 	test.beforeEach(({ page }) => page.goto("/tools/start"))
