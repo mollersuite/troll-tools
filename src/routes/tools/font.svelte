@@ -19,6 +19,7 @@
 <script>
 	import { browser } from "$app/env"
 	import { Button, Expander, InfoBar, Slider, ToggleSwitch } from "fluent-svelte"
+	import Accessibility from "@fluentui/svg-icons/icons/accessibility_20_filled.svg?raw"
 	import zalgo from "$lib/zalgo"
 
 	/** @param {string} text @param {HTMLElement} [paragraph] */
@@ -68,6 +69,9 @@
 {#if globalThis.speechSynthesis}
 	<Expander>
 		What do you mean "screen reader compatibility?"
+		<svelte:fragment slot="icon">
+			{@html Accessibility}
+		</svelte:fragment>
 		<svelte:fragment slot="content">
 			<p>Click to listen.</p>
 			<nav>
