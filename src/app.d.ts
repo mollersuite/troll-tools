@@ -9,6 +9,6 @@ declare namespace App {
 	interface Stuff {
 		name: string
 		description: string
-		icon: string
+		icon?: string
 	}
 }
