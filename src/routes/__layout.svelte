@@ -58,7 +58,7 @@
 	{#if path !== "/"}
 		<Button
 			bind:element={search_button}
-			title="troll"
+			title="Search (Press backtick twice)"
 			on:click={() => console.log((search_open = !search_open))}>
 			{@html Search}</Button>
 	{:else}
