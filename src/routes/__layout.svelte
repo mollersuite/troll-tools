@@ -7,6 +7,7 @@
 	import Troll from "@fluentui/svg-icons/icons/emoji_laugh_20_filled.svg?raw"
 	import Search from "@fluentui/svg-icons/icons/search_20_filled.svg?raw"
 	import Code from "@fluentui/svg-icons/icons/code_20_filled.svg?raw"
+	import PersonQuestionMark from "@fluentui/svg-icons/icons/person_question_mark_20_filled.svg?raw"
 	import Sound from "$lib/troll.mp3"
 
 	import "$lib/app.css"
@@ -65,18 +66,10 @@
 		<IconButton title="troll" on:click={() => new Audio(Sound).play()}>{@html Troll}</IconButton>
 	{/if}
 	<hr />
-	<span
-		>made by <a href="https://5079.ml">Jack</a> &
-		<a href="https://github.com/trollar">Charlie</a></span>
+	<IconButton title="Credits" rel="author" href="/credits">{@html PersonQuestionMark}</IconButton>
 	<hr />
-	<span
-		>powered by <a href="https://kit.svelte.dev">SvelteKit</a> &
-		<a href="https://fluent-svelte.vercel.app/">fluent-svelte</a></span>
-	<hr />
-	<span
-		><IconButton title="Source code" href="https://github.com/trollar/start-page"
-			>{@html Code}</IconButton
-		></span>
+	<IconButton title="Source code" href="https://github.com/trollar/start-page"
+		>{@html Code}</IconButton>
 	<hr />
 </footer>
 
