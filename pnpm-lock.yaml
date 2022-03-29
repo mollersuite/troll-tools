@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@fluentui/svg-icons': ^1.1.164
   '@fontsource/space-mono': ^4.5.5
+  '@github/hotkey': ^2.0.0
   '@sveltejs/adapter-auto': next
   '@sveltejs/kit': next
   fluent-svelte: ^1.5.1
@@ -17,6 +18,7 @@ dependencies:
 devDependencies:
   '@fluentui/svg-icons': 1.1.164
   '@fontsource/space-mono': 4.5.5
+  '@github/hotkey': 2.0.0
   '@sveltejs/adapter-auto': 1.0.0-next.33
   '@sveltejs/kit': 1.0.0-next.303_svelte@3.46.4
   fluent-svelte: 1.5.1
@@ -32,6 +34,10 @@ packages:
 
   /@fontsource/space-mono/4.5.5:
     resolution: {integrity: sha512-6DYNogw9H5hRIY4ep3vPe56b7KY3Lho33o08En0U7n8qX6QvDq43xaaa10fjJJEa4wzrin20X3HeU7KgSW7RcQ==}
+    dev: true
+
+  /@github/hotkey/2.0.0:
+    resolution: {integrity: sha512-KRw695msYYRIeFWvADV2PJa58+88NvYmHl+RJZLAlCtvbzjlkYwDf6yLC0xSLGcoYB5bKHQzudqYgPgpYnVbLw==}
     dev: true
 
   /@iarna/toml/2.2.5:

@@ -1,12 +1,25 @@
 <script>
-	import { ProgressBar, IconButton } from "fluent-svelte"
+	import { ProgressBar, IconButton, Button, ContentDialog, TextBox } from "fluent-svelte"
 	import { navigating, page } from "$app/stores"
+	import { install } from "@github/hotkey"
+	import { goto } from "$app/navigation"
 	import CaretLeft from "@fluentui/svg-icons/icons/caret_left_20_filled.svg?raw"
 	import Troll from "@fluentui/svg-icons/icons/emoji_laugh_20_filled.svg?raw"
+	import Search from "@fluentui/svg-icons/icons/search_20_filled.svg?raw"
 	import Code from "@fluentui/svg-icons/icons/code_20_filled.svg?raw"
 	import Sound from "$lib/troll.mp3"
+
 	import "$lib/app.css"
 	$: path = $page.url.pathname
+
+	let search_button
+	let search_open = false
+	$: search_button && install(search_button, "` `")
+	let value
+	function go() {
+		goto("/?q=" + value)
+		search_open = false
+	}
 </script>
 
 {#if $navigating}
@@ -31,11 +44,26 @@
 	{/if}
 	<slot />
 </main>
-
+<ContentDialog
+	bind:open={search_open}
+	title="Search"
+	on:backdropclick={() => (search_open = false)}>
+	<form action="/" on:submit|preventDefault={go}>
+		<TextBox type="search" name="q" bind:value on:search={go} />
+	</form>
+</ContentDialog>
 <footer>
 	<hr />
 	<!-- svelte-ignore missing-declaration -->
-	<IconButton title="troll" on:click={() => new Audio(Sound).play()}>{@html Troll}</IconButton> troll
+	{#if path !== "/"}
+		<Button
+			bind:element={search_button}
+			title="troll"
+			on:click={() => console.log((search_open = !search_open))}>
+			{@html Search}</Button>
+	{:else}
+		<IconButton title="troll" on:click={() => new Audio(Sound).play()}>{@html Troll}</IconButton>
+	{/if}
 	<hr />
 	<span
 		>made by <a href="https://5079.ml">Jack</a> &

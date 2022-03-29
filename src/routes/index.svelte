@@ -23,6 +23,8 @@
 	import Fuse from "fuse.js"
 	import { page } from "$app/stores"
 	import { browser } from "$app/env"
+	import { install } from "@github/hotkey"
+
 	export let tools = []
 	let value = browser ? $page.url.searchParams.get("q") ?? "" : ""
 
@@ -34,10 +36,18 @@
 	function go() {
 		goto(listed[0].href)
 	}
+	let search_button
+	$: search_button && install(search_button, "` `")
 </script>
 
 <form on:submit|preventDefault={go} action="/search">
-	<TextBox type="search" placeholder="Search for a tool..." bind:value on:search={go} name="q" />
+	<TextBox
+		type="search"
+		placeholder="Search for a tool..."
+		bind:inputElement={search_button}
+		bind:value
+		on:search={go}
+		name="q" />
 </form>
 
 <section>
