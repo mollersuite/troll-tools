@@ -40,7 +40,7 @@
 	<input type="hidden" name="t" value="h_" />
 	<input type="hidden" name="ia" value="web" />
 	{#if engine === engines.OpenCorporates}
-		<nav in:fly={{ x: -10 }} out:fly={{ x: 10 }}>
+		<nav in:fly|local={{ x: -10 }} out:fly|local={{ x: 10 }}>
 			<RadioButton name="type" value="companies">Companies</RadioButton>
 			<RadioButton name="type" value="officers">Officers</RadioButton>
 		</nav>
