@@ -10,7 +10,7 @@
 </script>
 
 {#if $navigating}
-	<ProgressBar />
+	<ProgressBar class="fixed" />
 {/if}
 
 {#if path !== "/"}
@@ -107,5 +107,15 @@
 		hr:last-child {
 			display: none;
 		}
+	}
+	:global(.fixed) {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		background-color: var(--fds-background-disabled);
+		opacity: 0.5;
 	}
 </style>
