@@ -47,11 +47,12 @@
 
 	{#if found.length}
 		<nav>
-			<IconButton type="button" disabled={page === 0} on:click={() => page--}
+			<IconButton type="button" title="Previous page" disabled={page === 0} on:click={() => page--}
 				>{@html Back}</IconButton>
 			{page}
 			<IconButton
 				type="button"
+				title="Next page"
 				disabled={Math.ceil(found.length / 100) <= page + 1}
 				on:click={() => page++}>{@html Forward}</IconButton>
 		</nav>
