@@ -39,6 +39,11 @@
 		) {
 			extensions.push("Dark Reader")
 		}
+		if (
+			Array.from(document.querySelectorAll("style")).some(el => el.classList.contains("stylus"))
+		) {
+			extensions.push("Stylus")
+		}
 	}
 </script>
 
@@ -66,7 +71,7 @@
 	{:else}
 		<InfoBar
 			title="No extensions found."
-			message="We can detect Ethereum wallets, Dark Reader, and FastFoward / Universal Bypass."
+			message="We can detect Ethereum wallets, Dark Reader, Stylus, and FastFoward / Universal Bypass."
 			closable={false} />
 	{/each}
 
