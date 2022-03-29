@@ -27,8 +27,8 @@
 		Linux: "https://searx.projectlounge.pw",
 		OpenCorporates: "https://opencorporates.com/search",
 		Twitter: "https://twitter.com/search",
-		troll: $page.url.origin,
-		Youtube: "https://www.youtube.com/results"
+		Youtube: "https://www.youtube.com/results",
+		troll: $page.url.origin
 	}
 	import { TextBox, RadioButton, ListItem } from "fluent-svelte"
 	import { fly } from "svelte/transition"
