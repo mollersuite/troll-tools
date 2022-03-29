@@ -10,10 +10,7 @@ const config = {
 				"object-src": ["none"],
 			},
 		},
-	},
-	hot: {
-		preserveLocalState: true,
-	},
+	}
 }
 
 export default config
