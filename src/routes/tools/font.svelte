@@ -18,7 +18,35 @@
 
 <script>
 	import { browser } from "$app/env"
-	import { InfoBar, Slider } from "fluent-svelte"
+	import { Button, Expander, InfoBar, Slider } from "fluent-svelte"
+
+	/** @param {string} text @param {HTMLElement} [paragraph] */
+	function say(text, paragraph) {
+		const voice = random(speechSynthesis.getVoices().filter(voice => voice.lang.startsWith("en-")))
+		let handle
+		return new Promise(resolve => {
+			function check() {
+				if (speechSynthesis.speaking) {
+					handle = requestAnimationFrame(check)
+				} else {
+					cancelAnimationFrame(handle)
+					resolve()
+				}
+			}
+			const utter = new SpeechSynthesisUtterance(text)
+			utter.voice = voice
+			if (paragraph) {
+				paragraph.innerText = ""
+			}
+			utter.addEventListener("boundary", function (event) {
+				if (paragraph) {
+					paragraph.innerText = text.substring(0, event.charIndex + event.charLength)
+				}
+			})
+			speechSynthesis.speak(utter)
+			check()
+		})
+	}
 
 	let value = ""
 	const zalgo = {
@@ -42,6 +70,27 @@
 	let zalgo_intensity = 1
 </script>
 
+{#if globalThis.speechSynthesis}
+	<Expander>
+		What do you mean "screen reader compatibility?"
+		<svelte:fragment slot="content">
+			<p>Click to listen.</p>
+			<nav>
+				<Button on:click={() => say("h̓eͩ ͧc͂o̼m̟ẻs̃")}>"h̓eͩ ͧc͂o̼m̟ẻs̃"</Button>
+				<Button on:click={() => say("he comes")}>"he comes"</Button>
+			</nav>
+			<p>
+				Notice how the screen reader spells out the Zalgo text? This also happens with the Underline
+				"font."
+			</p>
+			<nav>
+				<Button on:click={() => say("t̲h̲i̲s̲ ̲t̲e̲x̲t̲ ̲i̲s̲ ̲u̲n̲d̲e̲r̲l̲i̲n̲e̲d̲!̲")}>"t̲h̲i̲s̲ ̲t̲e̲x̲t̲ ̲i̲s̲ ̲u̲n̲d̲e̲r̲l̲i̲n̲e̲d̲!̲"</Button>
+				<Button on:click={() => say("this text is underlined!")}>"this text is underlined!"</Button>
+			</nav>
+		</svelte:fragment>
+	</Expander>
+	<br />
+{/if}
 <TextBox autofocus bind:value />
 {#if !browser}
 	<InfoBar
@@ -72,3 +121,16 @@
 		title="Type some text!"
 		message="We can convert your text to Zalgo, Underline, and Strikethrough." />
 {/if}
+
+<style>
+	nav {
+		display: flex;
+		justify-content: stretch;
+		align-items: stretch;
+		gap: 1ch;
+		flex-direction: row;
+	}
+	nav > :global(*) {
+		flex-grow: 1;
+	}
+</style>
