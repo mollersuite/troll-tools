@@ -11,7 +11,7 @@ const config = {
 		},
 	},
 	hot: {
-		preserveLocalState: true
+		preserveLocalState: true,
 	},
 }
 
