@@ -17,6 +17,7 @@
 </script>
 
 <script>
+	import { browser } from "$app/env"
 	import { InfoBar, Slider } from "fluent-svelte"
 
 	let value = ""
@@ -42,6 +43,13 @@
 </script>
 
 <TextBox autofocus bind:value />
+{#if !browser}
+	<InfoBar
+		severity="caution"
+		title="JavaScript required"
+		message="This tool currently requires JavaScript to be enabled. We might fix this later."
+		closable={false} />
+{/if}
 {#if value}
 	<h2>Zalgo</h2>
 	<Slider bind:value={zalgo_intensity} min={1} max={10} suffix=" characters per character" />
