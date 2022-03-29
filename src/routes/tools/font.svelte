@@ -91,7 +91,7 @@
 	</Expander>
 	<br />
 {/if}
-<TextBox autofocus bind:value />
+<TextBox autofocus bind:value aria-label="Text to convert" />
 {#if !browser}
 	<InfoBar
 		severity="caution"
