@@ -7,6 +7,7 @@ const config = {
 	use: {
 		browserName: "chromium",
 		defaultBrowserType: "chromium",
+		headless: false,
 	},
 }
 
