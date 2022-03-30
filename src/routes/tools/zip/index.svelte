@@ -80,7 +80,7 @@
 						alt=""
 						aria-hidden
 						src="https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/icons/{getIconForFolder(
-							entry.filename
+							entry.filename.substring(0, entry.filename.length - 1)
 						)}" />
 					{entry.filename.substring(directory.length)}
 				</ListItem>
