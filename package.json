@@ -18,10 +18,12 @@
 		"@playwright/test": "^1.20.1",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
+		"@zip.js/zip.js": "^2.4.7",
 		"fluent-svelte": "^1.5.1",
 		"prettier": "^2.5.1",
 		"prettier-plugin-svelte": "^2.5.0",
-		"svelte": "^3.44.0"
+		"svelte": "^3.44.0",
+		"vscode-icons-js": "^11.6.1"
 	},
 	"type": "module",
 	"prettier": {
