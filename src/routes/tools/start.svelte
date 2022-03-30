@@ -28,7 +28,7 @@
 		OpenCorporates: "https://opencorporates.com/search",
 		Twitter: "https://twitter.com/search",
 		Youtube: "https://www.youtube.com/results",
-		troll: $page.url.origin
+		troll: $page.url.origin,
 	}
 	import { TextBox, RadioButton, ListItem } from "fluent-svelte"
 	import { fly } from "svelte/transition"
@@ -51,11 +51,6 @@
 	<ListItem sveltekit:noscroll href="?engine={name}" selected={engine === engines[name]}
 		>{name}</ListItem>
 {/each}
-
-<svelte:head>
-	<title>trollarweb</title>
-	<meta name="description" content="trolls your start page" />
-</svelte:head>
 
 <style>
 	form {
