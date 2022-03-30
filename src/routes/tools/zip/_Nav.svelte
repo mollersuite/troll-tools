@@ -35,4 +35,10 @@
 		gap: 1ch;
 		flex-direction: row;
 	}
+
+	img {
+		margin-inline-end: 16px;
+		block-size: auto;
+		inline-size: 16px;
+	}
 </style>
