@@ -17,15 +17,15 @@
 
 <script>
 	import { ZipReader, BlobReader, BlobWriter, getMimeType } from "@zip.js/zip.js"
-	import { getIconForFile, getIconForFolder, getIconForOpenFolder } from "vscode-icons-js"
-	import { ListItem, ProgressRing, Button } from "fluent-svelte"
+	import { getIconForFile, getIconForFolder } from "vscode-icons-js"
+	import { ListItem, ProgressRing, Button, ContentDialog, TextBox } from "fluent-svelte"
 	import Nav from "./_Nav.svelte"
 	/**
 	 * @type {FileList}
 	 */
 	let files
 	let directory = ""
-	$: zip = files?.[0] && new ZipReader(new BlobReader(files.item(0)), {}).getEntries()
+	$: zip = files?.[0] && new ZipReader(new BlobReader(files.item(0))).getEntries()
 	$: in_dir = zip?.then(entries =>
 		entries.filter(
 			entry =>
@@ -37,6 +37,8 @@
 		)
 	)
 
+	let encrypt_dialog = false
+	let password
 	function download(blob, name) {
 		const url = URL.createObjectURL(blob)
 		const a = document.createElement("a")
@@ -49,7 +51,17 @@
 	}
 </script>
 
-<input type="file" accept=".zip,.gz" bind:files />
+<input type="file" accept=".zip" bind:files />
+<ContentDialog title="Encrypted" bind:open={encrypt_dialog}>
+	<p>You'll need a password to download this file.</p>
+	<form
+		on:submit|preventDefault={() => {
+			encrypt_dialog = false
+		}}>
+		<TextBox type="password" bind:value={password} />
+	</form>
+	<Button slot="footer" on:click={() => (encrypt_dialog = false)}>Cancel</Button>
+</ContentDialog>
 {#if zip}
 	{#await in_dir}
 		<ProgressRing />
@@ -75,10 +87,15 @@
 			{/each}
 			{#each entries.filter(entry => !entry.directory) as entry}
 				<ListItem
-					on:click={() =>
+					on:click={() => {
+						if (entry.encrypted && !password) {
+							encrypt_dialog = true
+							return
+						}
 						entry
-							.getData(new BlobWriter(getMimeType(entry.filename)))
-							.then(blob => download(blob, entry.filename.substring(directory.length)))}>
+							.getData(new BlobWriter(getMimeType(entry.filename)), { password })
+							.then(blob => download(blob, entry.filename.substring(directory.length)))
+					}}>
 					<img
 						slot="icon"
 						width="16"
