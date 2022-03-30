@@ -6,11 +6,11 @@ const config = {
 		adapter: adapter(),
 		csp: {
 			directives: {
-				"script-src": ["self"],
+				"script-src": ["self", "blob:"],
 				"object-src": ["none"],
 			},
 		},
-	}
+	},
 }
 
 export default config

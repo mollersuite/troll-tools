@@ -16,17 +16,10 @@
 </script>
 
 <script>
-	import { ZipReader, BlobReader, configure, BlobWriter, getMimeType } from "@zip.js/zip.js"
+	import { ZipReader, BlobReader, BlobWriter, getMimeType } from "@zip.js/zip.js"
 	import { getIconForFile, getIconForFolder, getIconForOpenFolder } from "vscode-icons-js"
 	import { ListItem, ProgressRing, Button } from "fluent-svelte"
-	import worker from "@zip.js/zip.js/dist/z-worker?url"
-
-	configure({
-		workerScripts: {
-			deflate: [worker],
-			inflate: [worker],
-		},
-	})
+	import Nav from "./_Nav.svelte"
 	/**
 	 * @type {FileList}
 	 */
@@ -61,30 +54,7 @@
 	{#await in_dir}
 		<ProgressRing />
 	{:then entries}
-		<nav>
-			<Button on:click={() => (directory = "")}>/</Button>
-			{#each directory ? directory
-						?.substring(0, directory.length - 1)
-						.split("/") : [] as folder, index}
-				<Button
-					on:click={() => {
-						// cd folder
-						directory =
-							directory
-								.split("/")
-								.splice(0, index + 1)
-								.join("/") + "/"
-					}}>
-					<img
-						width="16"
-						height="16"
-						alt=""
-						aria-hidden
-						src="https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/icons/{getIconForOpenFolder(
-							folder
-						)}" />{folder}</Button>
-			{/each}
-		</nav>
+		<Nav bind:directory />
 		<ul>
 			{#each entries.filter(entry => entry.directory) as entry}
 				<ListItem
@@ -128,13 +98,6 @@
 {/if}
 
 <style>
-	nav {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		gap: 1ch;
-		flex-direction: row;
-	}
 	img {
 		margin-inline-end: 16px;
 		block-size: auto;
