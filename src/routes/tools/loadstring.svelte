@@ -1,6 +1,6 @@
 <script context="module">
-	import Tool from "@fluentui/svg-icons/icons/wrench_20_filled.svg?raw"
-import { TextBox } from 'fluent-svelte'
+	import Link from "@fluentui/svg-icons/icons/link_20_filled.svg?raw"
+	import { TextBox } from "fluent-svelte"
 	export const prerender = true
 	/**
 	 * @type {import('@sveltejs/kit').Load}
@@ -10,24 +10,25 @@ import { TextBox } from 'fluent-svelte'
 			stuff: {
 				name: "loadstring generator",
 				description: "like Loadstringer but good",
-				icon: Tool,
+				icon: Link,
 			},
 		}
 	}
 </script>
+
 <script>
-	let value = ''
-	function get_name (name) {
+	let value = ""
+	function get_name(name) {
 		// strip protocol
-		name = name.replace(/^https?:\/\//, '')
+		name = name.replace(/^https?:\/\//, "")
 		// https://raw.githubusercontent.com/aznn/chrome-dino-game-bot/master/script.js -> aznn/chrome-dino-game-bot/master/script.js
-		if (name.startsWith('raw.githubusercontent.com/')) {
-			name = name.replace(/^raw.githubusercontent.com\//, '')
-			name = name.replace(/^[^/]+\/[^/]+\/[^/]+\//, '')
+		if (name.startsWith("raw.githubusercontent.com/")) {
+			name = name.replace(/^raw.githubusercontent.com\//, "")
+			name = name.replace(/^[^/]+\/[^/]+\/[^/]+\//, "")
 		}
-		// aznn/chrome-dino-game-bot/master/script.js -> aznn/chrome-dino-game-bot/script.js
 		return name
 	}
 </script>
+
 <TextBox bind:value />
 <pre>{`loadstring(game:HttpGetAsync "${value}", "${get_name(value)}")()`}</pre>
