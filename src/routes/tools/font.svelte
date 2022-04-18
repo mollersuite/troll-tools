@@ -111,11 +111,15 @@
 	{[...value].map(char => char + "\u0332").join("")}
 	<h2>Strikethrough</h2>
 	{[...value].map(char => char + "\u0336").join("")}
+	<h2>URL encoded</h2>
+	{value.split('').map(a=>'%' + a.charCodeAt(0).toString(16).toUpperCase()).join('')}
+	<h2>HTML entities</h2>
+	{[...value].map(a=>'&#' + a.codePointAt(0).toString(10).toUpperCase() + ';').join('')}
 {:else}
 	<InfoBar
 		closable={false}
 		title="Type some text!"
-		message="We can convert your text to Zalgo, Underline, and Strikethrough." />
+		message="We can convert your text to Zalgo, Underline, URL encoded, HTML entities, and Strikethrough." />
 {/if}
 
 <style>
