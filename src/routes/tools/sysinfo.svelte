@@ -34,6 +34,9 @@
 		if ("web3" in globalThis || "ethereum" in globalThis) {
 			extensions.push("Ethereum wallet")
 		}
+		if ('__REACT_DEVTOOLS_GLOBAL_HOOK__' in globalThis) {
+			extensions.push("React DevTools")
+		}
 		if (
 			Array.from(document.querySelectorAll("style")).some(el => el.classList.contains("darkreader"))
 		) {
@@ -71,7 +74,7 @@
 	{:else}
 		<InfoBar
 			title="No extensions found."
-			message="We can detect Ethereum wallets, Dark Reader, Stylus, and FastFoward / Universal Bypass."
+			message="We can detect Ethereum wallets, Dark Reader, Stylus, React DevTools, and FastFoward / Universal Bypass."
 			closable={false} />
 	{/each}
 
