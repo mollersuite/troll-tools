@@ -8,7 +8,7 @@
 	import Search from "@fluentui/svg-icons/icons/search_20_filled.svg?raw"
 	import Code from "@fluentui/svg-icons/icons/code_20_filled.svg?raw"
 	import PersonQuestionMark from "@fluentui/svg-icons/icons/person_question_mark_20_filled.svg?raw"
-	import Sound from "$lib/troll.mp3"
+	import Sound from "$lib/assets/troll.mp3"
 
 	import "$lib/app.css"
 	$: path = $page.url.pathname
