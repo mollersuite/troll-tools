@@ -1,7 +1,7 @@
 <script>
 	import { goto } from "$app/navigation"
 	import { session } from "$app/stores"
-	import { Button } from "fluent-svelte"
+	import { Button, InfoBar } from "fluent-svelte"
 	import { flip } from "svelte/animate"
 	import { scale as slide } from "svelte/transition"
 
@@ -20,9 +20,9 @@
 	}
 </script>
 
-<h1>Sign up for the ca tay</h1>
-<p>You'll verify your account later.</p>
-Type your name:<code>{output}</code>
+<InfoBar variant="error" title="Account required" message="To watch the rest of the video, you'll need an account." closable={false}/>
+Start making an account by giving us your name:
+<code>{output}</code>
 <br />
 {#if security.length}
 	For your security we have shuffled the keyboard and have removed these characters: {String.fromCodePoint(
