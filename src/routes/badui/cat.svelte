@@ -1,3 +1,20 @@
+<script context="module">
+	import Cat from "@fluentui/svg-icons/icons/animal_cat_20_filled.svg?raw"
+	export const prerender = true
+	/**
+	 * @type {import('@sveltejs/kit').Load}
+	 */
+	export async function load({ props }) {
+		return {
+			props,
+			stuff: {
+				name: "the ca tay",
+				description: "very cute",
+				icon: Cat,
+			},
+		}
+	}
+</script>
 <script>
 import { goto } from '$app/navigation';
 
@@ -5,7 +22,7 @@ import { goto } from '$app/navigation';
 	let currentTime = 0
 	$: currentTime > 2 && goto('./stage1')
 </script>
-<h1>the ca tay</h1>
+
 <!-- svelte-ignore a11y-media-has-caption -->
 <video src={ca_tay} controls bind:currentTime/>
 <style>
