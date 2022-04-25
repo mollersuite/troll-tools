@@ -20,7 +20,7 @@
 	}
 </script>
 
-<InfoBar variant="error" title="Account required" message="To watch the rest of the video, you'll need an account." closable={false}/>
+<InfoBar severity="critical" title="Account required" message="To watch the rest of the video, you'll need an account." closable={false}/>
 Start making an account by giving us your name:
 <code>{output}</code>
 <br />
