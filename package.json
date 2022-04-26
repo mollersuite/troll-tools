@@ -1,6 +1,7 @@
 {
-	"name": "start-page",
+	"name": "troll.pages.dev",
 	"version": "2.0.0",
+	"packageManager": "pnpm@6.32.10",
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
