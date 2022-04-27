@@ -47,6 +47,9 @@
 		) {
 			extensions.push("Stylus")
 		}
+		if (navigator.share.toString().startsWith('(data)')) {
+			extensions.push("Plasma Browser Integration")
+		}
 	}
 </script>
 
@@ -74,7 +77,7 @@
 	{:else}
 		<InfoBar
 			title="No extensions found."
-			message="We can detect Ethereum wallets, Dark Reader, Stylus, React DevTools, and FastFoward / Universal Bypass."
+			message="We can detect Ethereum wallets, Dark Reader, Stylus, React DevTools, Plasma Browser Integration, and FastFoward / Universal Bypass."
 			closable={false} />
 	{/each}
 
