@@ -47,7 +47,7 @@
 		) {
 			extensions.push("Stylus")
 		}
-		if (navigator.share.toString().startsWith('(data)')) {
+		if ((navigator.share?.toString() ?? "").startsWith('(data)')) {
 			extensions.push("Plasma Browser Integration")
 		}
 	}
