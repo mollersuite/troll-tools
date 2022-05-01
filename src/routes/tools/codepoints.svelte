@@ -17,11 +17,14 @@
 </script>
 
 <script>
+	import { InfoBar } from "fluent-svelte"
 	let value = ""
 </script>
 
+<InfoBar title="See also"><a href="/tools/font">Unicode "Font" Generator</a></InfoBar>
 <textarea bind:value />
 {#each Array.from(value) as codepoint}
 	{@const fancy = codepoint.codePointAt().toString(16).toUpperCase().padStart(4, "0")}
-	<ListItem on:click={()=>navigator.clipboard.writeText(codepoint)}>U+{fancy} = <code>{codepoint}</code></ListItem>
+	<ListItem on:click={() => navigator.clipboard.writeText(codepoint)}
+		>U+{fancy} = <code>{codepoint}</code></ListItem>
 {/each}
